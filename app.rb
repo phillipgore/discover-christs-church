@@ -29,11 +29,11 @@ class DCC < Sinatra::Base
 		alias_method :h, :escape_html
 	end
 	
-#	before '/admin/*' do
-#		unless session['user_id']
-#			redirect '/admin'
-#		end
-#	end
+	before '/admin/*' do
+		unless session['user_id']
+			redirect '/admin'
+		end
+	end
 	
 
 
