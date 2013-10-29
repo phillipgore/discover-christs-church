@@ -26,7 +26,7 @@
 	<p>
 		<a class="button_yellow" href="/admin/delete/date/<%= date_list.id %>">Delete</a>	
 		<a class="button_yellow" href="/admin/edit/date/<%= date_list.id %>">Edit</a>
-		<a class="button_yellow date" href="/admin/registrations/<%= date_list.id %>">View <%= date_list.date.strftime("%a, %b %d") %> @ <%= date_list.time.strftime("%I:%M %p") %></a>
+		<a class="button_yellow view_date" href="/admin/registrations/<%= date_list.id %>">View <%= date_list.date.strftime("%a, %b %d") %> @ <%= date_list.time.strftime("%I:%M %p") %></a>
 		<a class="button_yellow" href="/admin/download/<%= date_list.id %>">Download CSV</a>
 	</p>
 <% end %>
