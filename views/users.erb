@@ -1,0 +1,53 @@
+<h1 class="heading">Manage Discover Christ's Church Users</h1>
+
+<%= erb :'admin_nav', :layout => false %>
+
+<div class="container">
+
+	<% if flash[:notice] %>  
+	    <div class="notice"><%= flash[:notice] %></div>
+	<% end %> 
+
+	<form class="" action="/admin/add/user" method="post" id="user" enctype="multipart/form-data">
+	
+		<fieldset>
+			<label>First</label>
+			<input type="text" name="user[user_first_name]" id="user_first_name" autocorrect="off"><br>
+			<label>Last</label>
+			<input type="text" name="user[user_last_name]" id="user_last_name" autocorrect="off">
+		</fieldset>
+	
+		<fieldset>
+			<label>Email</label>
+			<input type="email" autocomplete='off' name="user[user_email]" id="user_email" autocorrect="off" autocapitalize="off"/>
+			<label>Password</label>
+			<input type="text" autocomplete='off' name="user[password]" id="password" autocorrect="off" autocapitalize="off"/>
+		</fieldset>
+		
+		<fieldset>		
+			<button class="button_yellow button_float_right" type="submit">Add New User</button>
+		</fieldset>
+		
+	</form>
+
+</div>
+	
+<table>
+  <tbody>
+	<% if flash[:delete_notice] %>  
+	    <tr><td colspan="6" class="notice"><%= flash[:delete_notice] %></td></tr>
+	<% end %> 
+  <% @users.each_with_index do |users| %>
+    <tr>    
+	    <td><a class="button_yellow" href="/admin/delete/user/<%= users.id %>">Delete</a></td>
+	    <td><a class="button_yellow" href="/admin/edit/user/<%= users.id %>">Edit</a></td>
+	    <td><%= users.user_first_name %></td>
+	    <td><%= users.user_last_name %></td>
+	    <td><%= users.user_email %></td>
+		<td><a class="button_yellow button_secondary" href="/admin/edit/password/<%= users.id %>">Change Password</a></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<div class="bottom_margin"></div>

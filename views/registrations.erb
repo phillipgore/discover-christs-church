@@ -1,0 +1,29 @@
+<h1 class="heading">Manage Discover Christ's Church Registrants</h1>
+
+<%= erb :'admin_nav', :layout => false %>
+
+<table>
+	<thead>
+		<td colspan="5" align="left"><%= @date.date.strftime("%A, %B %d") %> @ <%= @date.time.strftime("%I:%M %p") %></td>
+		<td colspan="2" align="right"><a class="button_yellow" href="/admin/download/<%= @date.id %>">Download CSV</a></td>
+	</thead>
+  <tbody>
+  <% @registrations.each_with_index do |registrations| %>
+    <tr>
+	    <td><a class="button_yellow" href="/admin/delete/registration/<%= registrations.id %>">Delete</a></td>
+	    <td><a class="button_yellow" href="/admin/edit/registration/<%= registrations.id %>">Edit</a></td>
+	    <td><%= registrations.first_name %></td>
+	    <td><%= registrations.last_name %></td>
+	    <td><%= registrations.phone %></td>
+	    <td><%= registrations.email %></td>
+	    <td>
+	    	<% unless registrations.note.blank? %>
+	    		<a class="button_yellow" href="/admin/note/<%= registrations.id %>">Note</a>
+			<% end %>
+	    </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<div class="bottom_margin"></div>

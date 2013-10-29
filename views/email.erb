@@ -1,0 +1,28 @@
+<h1 class="heading">Edit Confirmation Email.</h1>
+
+<div class="container">
+
+	<% if flash[:notice] %>  
+	    <div class="notice"><%= flash[:notice] %></div>
+	<% end %> 
+
+	<form class="" action="/admin/update/email" method="post" id="registrant" enctype="multipart/form-data">
+	
+		<fieldset>
+			<label>BCC</label>
+			<input name="" id="bcc" autocorrect="off" autocapitalize="off" value=""><br>
+		</fieldset>
+		
+		<fieldset>
+			<label>Body</label>
+			<textarea class="rte-zone" name="" id="body" autocorrect="off"></textarea>
+		</fieldset>
+		
+		<fieldset>
+			<button class="button_yellow button_float_right" type="submit" name="submit">Submit</button>
+		</fieldset>
+	
+	</form>
+</div>
+
+<div class="bottom_margin"></div>

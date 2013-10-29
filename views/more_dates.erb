@@ -1,0 +1,11 @@
+<a class="button_yellow button_upper_left" href="/">Start Over</a>
+
+<h1 class="heading">Select a date to attend.</h1>
+
+<div class="container_center">
+	<% @date_list.each_with_index do |date_list| %>
+		<a class="button_yellow date" href="/new/registration/<%= date_list.id %>"><%= date_list.date.strftime("%a, %b %d") %> @ <%= date_list.time.strftime("%I:%M %p") %></a><br />
+	<% end %>
+</div>
+
+<div class="bottom_margin"></div>

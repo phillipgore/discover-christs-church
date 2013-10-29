@@ -1,0 +1,244 @@
+html { 
+	padding: 0px; 
+	margin: 0px; 
+	min-height: 100%; 
+	overflow:auto; /* triggers 100% height in Opera 9.5 */
+	overflow-y:scroll; /* creates a horizontal scrollbar, for a more consistent look & feel */
+}
+
+body {
+	padding: 0px;
+	margin: 0px;
+	font-size: 12px;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+.background {
+	background-repeat: repeat;
+	background-image: url(../img/background.jpg);
+}
+
+.background_stage {
+	padding: 0px;
+	margin: 0px;
+	height: 768px;
+	background-image: url(../img/background-horizontal.jpg);
+	background-repeat: repeat-x;
+}
+
+
+.stage {
+	text-align: center;
+	display: inline-block;
+	padding: 0px;
+	margin: 0px;
+	background-position: center center;
+	width: 100%;
+	height: 768px;
+	background-image: url(../img/background-stage.jpg);
+	background-repeat: no-repeat;
+}.content {
+	padding: 0px;
+	margin: 0px;
+}
+ form {
+	margin: 0px;
+	font-size: 16px;
+	padding: 0px;
+}
+ fieldset {
+	padding: 0px;
+	margin: 18px;
+	border-style: none;
+}
+ .button_yellow {
+	margin-bottom: 12px;
+	display: inline-block;
+	border-style: none;
+	text-shadow: 0px 1px 1px white;
+	font-size: 16px;
+	background-color: #D2B555;
+	text-align: center;
+	margin-right: 6px;
+	margin-left: 6px;
+	padding-left: 21px;
+	padding-bottom: 12px;
+	padding-right: 21px;
+	padding-top: 12px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #3a2709;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	border-radius: 5px;
+	background: -webkit-gradient(linear, left top, left bottom, from(#F0E373), to(#B88C3A));
+	box-shadow: 0px 1px 4px #030631;
+	-moz-box-shadow: 0px 1px 4px #030631;
+	-webkit-box-shadow: 0px 1px 4px #030631;
+}
+ .date {
+	width: 234px;
+}
+ h1 {
+	text-shadow: 0px 2px 4px #020924;
+	font-style: normal;
+	margin-top: 90px;
+	padding: 0px;
+	color: white;
+	text-align: center;
+	font-weight: normal;
+	font-size: 36px;
+}
+ .calender {
+	margin-right: auto;
+	margin-left: auto;
+	width: 237px;
+	background-image: url(../img/calender.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	height: 318px;
+	margin-bottom: 36px;
+	margin-top: 104px;
+}
+ .month {
+	width: 237px;
+	text-align: center;
+	margin-bottom: 12px;
+	padding-top: 15px;
+	font-size: 42px;
+	color: white;
+}
+ .day {
+	width: 237px;
+	font-weight: bold;
+	font-size: 127px;
+	text-align: center;
+ }
+.today {
+	font-size: 16px;
+	text-align: center;
+	color: #999999;
+	margin-top: -16px;
+	font-weight: normal;
+	font-style: normal;
+}
+ label {
+	text-shadow: 0px 2px 4px #020924;
+	padding-top: 9px;
+	float: left;
+	display: inline-block;
+	width: 150px;
+	text-align: right;
+	color: white;
+}
+ input {
+	margin-bottom: 3px;
+	width: 237px;
+	padding-left: 10px;
+	padding-bottom: 6px;
+	padding-right: 10px;
+	padding-top: 6px;
+	font-size: 16px;
+}
+textarea {
+    height: 72px;
+    resize: none;
+	width: 237px;
+	padding-left: 10px;
+	padding-bottom: 6px;
+	padding-right: 10px;
+	padding-top: 6px;
+	font-size: 16px;
+}
+ select {
+	margin-right: 7px;
+	float: right;
+	margin-bottom: -3px;
+	font-size: 16px;
+	width: 261px;
+}
+ .container {
+	margin-left: -152px;
+	margin-bottom: 36px;
+	width: 462px;
+	display: inline-block;
+}
+ .container_center {
+	margin-bottom: 36px;
+	width: 462px;
+	display: inline-block;
+}
+ .button_float_right {
+	margin-left: 0px;
+	margin-bottom: 0px;
+	margin-right: 7px;
+	margin-top: 0px;
+	float: right;
+}
+ .button_secondary {
+	margin-right: 18px;
+	float: right;
+}
+ .info {
+	line-height: 28px;
+	font-size: 20px;
+	color: white;
+}
+ .top_buttons {
+	margin-bottom: 36px;
+	margin-top: 18px;
+}
+ table {
+	text-align: left;
+	color: white;
+	text-shadow: 0px 2px 4px #020924;
+	border-collapse: collapse;
+	padding: 0px;
+	font-size: 24px;
+	margin-right: auto;
+	margin-left: auto;
+}
+ table .button_yellow {
+	margin: 0px;
+}
+ td {
+	padding-bottom: 6px;
+	padding-top: 6px;
+	border-style: none;
+	padding-right: 7px;
+	padding-left: 8px;
+}
+ a {
+	text-decoration: none;
+	color: white;
+}
+ thead td {
+	padding-bottom: 18px;
+}
+ .jq_current {
+	position: relative;
+}
+ .button_upper_left {
+	right: 18px;
+	top: 18px;
+	position: absolute;
+}
+ .notice {
+	text-shadow: 0px 2px 4px #020924;
+	margin-right: 24px;
+	text-align: right;
+	color: #f2a026;
+	font-size: 16px;
+}
+ table .notice {
+	padding-bottom: 18px;
+	text-align: left;
+	color: #f2a026;
+	font-size: 20px;
+}
+ .bottom_margin {
+	height: 72px;
+	width: 100%;
+}
+ 

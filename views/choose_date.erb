@@ -1,0 +1,17 @@
+<h1 class="heading">Discover Christ's Church Registration</h1>
+
+<div class="calender">
+	<div class="month"><%= @time.strftime("%B") %></div>
+	<div class="day">
+		<%= @time.strftime("%d") %>
+		<div class="today">Today's Date</div>
+	</div>
+	
+</div>
+
+<% @date_list.each_with_index do |date_list| %>
+	<a class="button_yellow date" href="/new/registration/<%= date_list.id %>"><%= date_list.date.strftime("%a, %b %d") %> @ <%= date_list.time.strftime("%I:%M %p") %></a>
+<% end %>
+	<a class="button_yellow" href="/more">More Dates</a>
+
+<div class="bottom_margin"></div>

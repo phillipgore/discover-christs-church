@@ -1,0 +1,13 @@
+<h1>Note for <%= @registrant.first_name %> <%= @registrant.last_name %>.</h1>
+
+<div class="container_center info">
+	<%= @date.date.strftime("%a, %b %d") %> @ <%= @date.time.strftime("%I:%M %p") %>
+	<p><%= @registrant.first_name %> <%= @registrant.last_name %><br />
+	<%= @registrant.phone %><br />
+	<%= @registrant.email %></p>
+	<p><%= @registrant.note %></p>
+	
+	<a class="button_yellow" href="/admin/registrations/<%= @registrant.discover_id %>">Close</a>
+</div>
+
+<div class="bottom_margin"></div>
