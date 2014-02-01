@@ -1,11 +1,12 @@
-<a class="button_yellow button_upper_left" href="/">Start Over</a>
+<a class="btn_upper_right btn_expand_to_fit" href="/">Start Over</a>
 
-<h1 class="heading">Select a date to attend.</h1>
+<h1>Discover Christ's Church</h1>
+<h2>Select a date to attend.</h2>
 
 <div class="container_center">
-	<% @date_list.each_with_index do |date_list| %>
-		<a class="button_yellow date" href="/new/registration/<%= date_list.id %>"><%= date_list.date.strftime("%a, %b %d") %> @ <%= date_list.time.strftime("%I:%M %p") %></a><br />
-	<% end %>
+	<div class="date_stack">
+		<% @date_list.each_with_index do |date_list| %>
+			<a href="/new/registration/<%= date_list.id %>"><%= date_list.date.strftime("%a, %b %d") %> @ <%= date_list.time.strftime("%I:%M %p") %></a><br />
+		<% end %>
+	</div>
 </div>
-
-<div class="bottom_margin"></div>

@@ -1,25 +1,20 @@
-<h1 class="heading">Edit Date.</h1>
-
 <%= erb :'admin_nav', :layout => false %>
 
-<div class="container">
+<h1>Discover Christ's Church</h1>
+<h2>Edit Date.</h2> 
 
+<form class="" action="/admin/update/date/<%= @discover.id %>" method="post" id="date" enctype="multipart/form-data">
 	<% if flash[:notice] %>  
 	    <div class="notice"><%= flash[:notice] %></div>
-	<% end %> 
-	
-	<form class="" action="/admin/update/date/<%= @discover.id %>" method="post" id="date" enctype="multipart/form-data">
-		<fieldset>
-			<label>Date</label>
-			<input type="text" name="discover[date]" id="date" autocorrect="off" value="<%= @discover.date.strftime("%b %d, %Y") %>"><br>
-			<label>Time</label>
-			<input type="tel" name="discover[time]" id="time" autocorrect="off" value="<%= @discover.time.strftime("%I:%M %p") %>">
-		</fieldset> 
-			
-		<fieldset>
-			<button class="button_yellow button_float_right" type="submit" name="submit">Update</button>
-		</fieldset>
-	</form>
-</div>
-
-<div class="bottom_margin"></div>
+	<% end %>
+	<fieldset>
+		<label>Date</label>
+		<input type="text" name="discover[date]" id="date" autocorrect="off" value="<%= @discover.date.strftime("%b %d, %Y") %>"><br>
+		<label>Time</label>
+		<input type="tel" name="discover[time]" id="time" autocorrect="off" value="<%= @discover.time.strftime("%I:%M %p") %>">
+	</fieldset> 
+		
+	<fieldset>
+		<button class="btn_expand_to_fit btn_right" type="submit" name="submit">Update</button>
+	</fieldset>
+</form>

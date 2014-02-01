@@ -1,46 +1,42 @@
-<h1 class="heading">Edit Registrant.</h1>
+<%= erb :'admin_nav', :layout => false %>
 
-<div class="container">
+<h1>Discover Christ's Church</h1>
+<h2>Edit registrant.</h2> 
 
+<form class="" action="/update/registration/<%= @registrant.id %>" method="post" id="registrant" enctype="multipart/form-data">
 	<% if flash[:notice] %>  
 	    <div class="notice"><%= flash[:notice] %></div>
 	<% end %> 
+	
+	<fieldset>
+		<select name="registrant[discover_id]">
+			<option value="<%= @registrant.discover_id %>"><%= @date.date.strftime("%a, %b %d, %Y") %> at <%= @date.time.strftime("%I:%M %p") %></option>
+		<% @date_list.each_with_index do |date_list| %>
+			<option value="<%= date_list.id %>"><%= date_list.date.strftime("%a, %b %d, %Y") %> at <%= date_list.time.strftime("%I:%M %p") %></option>
+		<% end %>
+		</select>
+	</fieldset>
 
-	<form class="" action="/admin/update/registration/<%= @registrant.id %>" method="post" id="registrant" enctype="multipart/form-data">
+	<fieldset>
+		<label>First *</label>
+		<input type="text" name="registrant[first_name]" id="first_name" autocorrect="off" value="<%= @registrant.first_name %>"><br>
+		<label>Last *</label>
+		<input type="text" name="registrant[last_name]" id="last_name" autocorrect="off" value="<%= @registrant.last_name %>">
+	</fieldset>
 	
-		<fieldset>
-			<select name="registrant[discover_id]">
-				<option value="<%= @registrant.discover_id %>"><%= @date.date.strftime("%a, %b %d, %Y") %> at <%= @date.time.strftime("%I:%M %p") %></option>
-			<% @date_list.each_with_index do |date_list| %>
-				<option value="<%= date_list.id %>"><%= date_list.date.strftime("%a, %b %d, %Y") %> at <%= date_list.time.strftime("%I:%M %p") %></option>
-			<% end %>
-			</select>
-		</fieldset>
+	<fieldset>
+		<label>Phone *</label>
+		<input type="tel" name="registrant[phone]" id="phone" autocorrect="off" autocapitalize="off" value="<%= @registrant.phone %>"><br>
+		<label>Email *</label>
+		<input type="email" name="registrant[email]" id="email" autocorrect="off" autocapitalize="off" value="<%= @registrant.email %>">
+	</fieldset> 
 	
-		<fieldset>
-			<label>First *</label>
-			<input type="text" name="registrant[first_name]" id="first_name" autocorrect="off" value="<%= @registrant.first_name %>"><br>
-			<label>Last *</label>
-			<input type="text" name="registrant[last_name]" id="last_name" autocorrect="off" value="<%= @registrant.last_name %>">
-		</fieldset>
-		
-		<fieldset>
-			<label>Phone *</label>
-			<input type="tel" name="registrant[phone]" id="phone" autocorrect="off" autocapitalize="off" value="<%= @registrant.phone %>"><br>
-			<label>Email *</label>
-			<input type="email" name="registrant[email]" id="email" autocorrect="off" autocapitalize="off" value="<%= @registrant.email %>">
-		</fieldset>
-		
-		<fieldset>
-			<label>Notes</label>
-			<textarea name="registrant[note]" id="note" autocorrect="off"><%= @registrant.note %></textarea>
-		</fieldset>
-		
-		<fieldset>
-			<button class="button_yellow button_float_right" type="submit" name="submit">Submit</button>
-		</fieldset>
+	<fieldset>
+		<label>Notes</label>
+		<textarea name="registrant[note]" id="note" autocorrect="off"><%= @registrant.note %></textarea>
+	</fieldset>
 	
-	</form>
-</div>
-
-<div class="bottom_margin"></div>
+	<fieldset>
+		<button class="btn_expand_to_fit btn_right" type="submit" name="submit">Submit</button>
+	</fieldset>
+</form>

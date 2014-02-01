@@ -1,39 +1,35 @@
-<a class="button_yellow button_upper_left" href="/">Start Over</a>
+<a class="btn_upper_right btn_expand_to_fit" href="/">Start Over</a>
 
-<h1 class="heading"><%= @date.date.strftime("%A, %B %d") %> @ <%= @date.time.strftime("%I:%M %p") %></h1>
+<h1>Discover Christ's Church</h1>
+<h2 class="heading">Register for <%= @date.date.strftime("%A, %B %d") %> @ <%= @date.time.strftime("%I:%M %p") %></h2>
 
-<div class="container">
 
+
+<form class="" action="/add/registration/<%= @date.id %>" method="post" id="date" enctype="multipart/form-data">
 	<% if flash[:notice] %>  
 	    <div class="notice"><%= flash[:notice] %></div>
 	<% end %> 
-
-	<form class="" action="/add/registration/<%= @date.id %>" method="post" id="date" enctype="multipart/form-data">
-		<fieldset>
-			<label>First *</label>
-			<input type="text" name="registrant[first_name]" id="first_name" autocorrect="off"><br>
-			<label>Last *</label>
-			<input type="text" name="registrant[last_name]" id="last_name" autocorrect="off">
-		</fieldset>
-		
-		<fieldset>
-			<label>Phone *</label>
-			<input type="tel" name="registrant[phone]" id="phone" autocorrect="off" autocapitalize="off"><br>
-			<label>Email *</label>
-			<input type="email" name="registrant[email]" id="email" autocorrect="off" autocapitalize="off">
-		</fieldset> 
-		
-		<fieldset>
-			<label>Notes</label>
-			<textarea name="registrant[note]" id="note" autocorrect="off"></textarea>
-		</fieldset>
-			
-		<fieldset>
-			<button class="button_yellow button_float_right" type="submit" name="submit">Submit</button>
-		</fieldset>
 	
-	</form>
+	<fieldset>
+		<label>First*</label>
+		<input type="text" name="registrant[first_name]" id="first_name" autocorrect="off"><br>
+		<label>Last*</label>
+		<input type="text" name="registrant[last_name]" id="last_name" autocorrect="off">
+	</fieldset>
 	
-</div>
-
-<div class="bottom_margin"></div>
+	<fieldset>
+		<label>Phone*</label>
+		<input type="tel" name="registrant[phone]" id="phone" autocorrect="off" autocapitalize="off"><br>
+		<label>Email*</label>
+		<input type="email" name="registrant[email]" id="email" autocorrect="off" autocapitalize="off">
+	</fieldset> 
+	
+	<fieldset>
+		<label>Notes</label>
+		<textarea name="registrant[note]" id="note" autocorrect="off"></textarea>
+	</fieldset>
+		
+	<fieldset>
+		<button class="btn_expand_to_fit btn_right" type="submit" name="submit">Submit</button>
+	</fieldset>
+</form>

@@ -1,4 +1,5 @@
-<h1 class="heading">Discover Christ's Church Registration</h1>
+<h1>Discover Christ's Church</h1>
+<h2>Registration Application</h2>
 
 <div class="calender">
 	<div class="month"><%= @time.strftime("%B") %></div>
@@ -6,12 +7,11 @@
 		<%= @time.strftime("%d") %>
 		<div class="today">Today's Date</div>
 	</div>
-	
 </div>
 
+<div class="date_strip">
 <% @date_list.each_with_index do |date_list| %>
-	<a class="button_yellow date" href="/new/registration/<%= date_list.id %>"><%= date_list.date.strftime("%a, %b %d") %> @ <%= date_list.time.strftime("%I:%M %p") %></a>
+	<a href="/new/registration/<%= date_list.id %>"><%= date_list.date.strftime("%a, %b %d") %> @ <%= date_list.time.strftime("%I:%M %p") %></a>
 <% end %>
-	<a class="button_yellow" href="/more">More Dates</a>
-
-<div class="bottom_margin"></div>
+	<a class="btn_expand_to_fit" href="/more">More Dates</a>
+</div>

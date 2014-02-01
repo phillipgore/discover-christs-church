@@ -1,28 +1,21 @@
-<h1 class="heading">Login to the admin area.</h1>
+<a class="btn_upper_left btn_expand_to_fit" href="/">Home</a>
 
-<div class="container">
+<h1>Discover Christ's Church</h1>
+<h2 class="heading">Login to the admin area.</h2> 
 
+<form class="" action="/login" method="post" id="child" enctype="multipart/form-data">
 	<% if flash[:notice] %>  
 	    <div class="notice"><%= flash[:notice] %></div>
-	<% end %> 
+	<% end %>
 	
-	<form class="" action="/login" method="post" id="child" enctype="multipart/form-data">
-	
-		<fieldset>
-			<label>Email</label>
-			<input type="email" autocomplete='off' name="user_email" id="user_email" autocorrect="off" autocapitalize="off"/>
+	<fieldset>
+		<label>Email</label>
+		<input type="email" autocomplete='off' name="user_email" id="user_email" autocorrect="off" autocapitalize="off"/><br>
+		<label>Password</label>
+		<input type="password" autocomplete='off' name="password" id="password" autocorrect="off" autocapitalize="off"/>
+	</fieldset>
 			
-			<label>Password</label>
-			<input type="password" autocomplete='off' name="password" id="password" autocorrect="off" autocapitalize="off"/>
-		</fieldset>
-				
-		<fieldset>
-			<button class="button_yellow button_float_right" type="submit">Login</button>
-			<a class="button_yellow button_secondary" href="/">Home</a>
-		</fieldset>
-		
-	</form>
-	
-</div>
-
-<div class="bottom_margin"></div>
+	<fieldset>
+		<button class="btn_expand_to_fit btn_right" type="submit">Login</button>
+	</fieldset>
+</form>

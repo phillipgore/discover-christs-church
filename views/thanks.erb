@@ -1,14 +1,16 @@
-<h1>Thank you for registering.</h1>
+<h1>Discover Christ's Church</h1>
 
-<div class="container_center info">
-	<%= @date.date.strftime("%a, %b %d") %> @ <%= @date.time.strftime("%I:%M %p") %>
+<h2>Thank you for registering.</h2>
+
+<div class="info">
+	<h2><strong><%= @date.date.strftime("%A, %B %d") %> @ <%= @date.time.strftime("%I:%M %p") %></strong></h2>
 	<p><%= @registrant.first_name %> <%= @registrant.last_name %><br />
 	<%= @registrant.phone %><br />
 	<%= @registrant.email %></p>
 	<p><%= @registrant.note %></p>
 	
-	<a class="button_yellow" href="/edit/registration/<%= @registrant.id %>">Edit</a>
-	<a class="button_yellow" href="/confirm/<%= @registrant.id %>">Confirm</a>
+	<a class="btn_expand_to_fit" href="/edit/registration/<%= @registrant.id %>">Edit Registration</a>
+	<a class="btn_expand_to_fit" href="/confirm/<%= @registrant.id %>">Confirm Registration</a>
 </div>
 
 <div class="bottom_margin"></div>

@@ -1,33 +1,26 @@
-<h1 class="heading">Edit User.</h1>
-
 <%= erb :'admin_nav', :layout => false %>
 
-<div class="container">
+<h1>Discover Christ's Church</h1>
+<h2>Edit User.</h2> 
 
+<form class="" action="/admin/update/user/<%= @user.id %>" method="post" id="user" enctype="multipart/form-data">
 	<% if flash[:notice] %>  
 	    <div class="notice"><%= flash[:notice] %></div>
-	<% end %> 
-	
-	<form class="" action="/admin/update/user/<%= @user.id %>" method="post" id="user" enctype="multipart/form-data">
-	
-		<fieldset>
-			<label>First</label>
-			<input type="text" name="user[user_first_name]" id="user_first_name" autocorrect="off" value="<%= @user.user_first_name %>"><br>
-			<label>Last</label>
-			<input type="text" name="user[user_last_name]" id="user_last_name" autocorrect="off" value="<%= @user.user_last_name %>">
-		</fieldset>
-	
-		<fieldset>
-			<label>Email</label>
-			<input type="email" autocomplete='off' name="user[user_email]" id="user_email" autocorrect="off" autocapitalize="off" value="<%= @user.user_email %>"/>
-		</fieldset>
-		
-		<fieldset>		
-			<button class="button_yellow button_float_right" type="submit">Update</button>
-		</fieldset>
-		
-	</form>
+	<% end %>
+	<fieldset>
+		<label>First</label>
+		<input type="text" name="user[user_first_name]" id="user_first_name" autocorrect="off" value="<%= @user.user_first_name %>"><br>
+		<label>Last</label>
+		<input type="text" name="user[user_last_name]" id="user_last_name" autocorrect="off" value="<%= @user.user_last_name %>">
+	</fieldset>
 
-</div>
-
-<div class="bottom_margin"></div>
+	<fieldset>
+		<label>Email</label>
+		<input type="email" autocomplete='off' name="user[user_email]" id="user_email" autocorrect="off" autocapitalize="off" value="<%= @user.user_email %>"/>
+	</fieldset>
+	
+	<fieldset>		
+		<button class="btn_expand_to_fit btn_right" type="submit">Update</button>
+	</fieldset>
+	
+</form>

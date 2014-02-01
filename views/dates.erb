@@ -1,34 +1,32 @@
-<h1 class="heading">Manage Discover Christ's Church Dates</h1>
-
 <%= erb :'admin_nav', :layout => false %>
 
-<div class="container">
+<h1>Discover Christ's Church</h1>
+<h2>Manage Dates</h2>
 
+<form class="" action="/admin/add/date" method="post" id="date" enctype="multipart/form-data">
 	<% if flash[:notice] %>  
 	    <div class="notice"><%= flash[:notice] %></div>
 	<% end %> 
 
-	<form class="" action="/admin/add/date" method="post" id="date" enctype="multipart/form-data">
-		<fieldset>
-			<label>Date</label>
-			<input type="text" autocorrect="off" name="discover[date]" id="date"><br>
-			<label>Time</label>
-			<input type="tel" autocorrect="off" name="discover[time]" id="time">
-		</fieldset> 
-			
-		<fieldset>
-			<button class="button_yellow button_float_right" type="submit" name="submit">Add New Date</button>
-		</fieldset>
-	</form>
-</div>
+	<fieldset>
+		<label>Date</label>
+		<input type="text" autocorrect="off" name="discover[date]" id="date"><br>
+		<label>Time</label>
+		<input type="tel" autocorrect="off" name="discover[time]" id="time">
+	</fieldset> 
+		
+	<fieldset>
+		<button class="btn_expand_to_fit btn_right" type="submit" name="submit">Add New Date</button>
+	</fieldset>
+</form>
 
-<% @date_list.each_with_index do |date_list| %>
+<div class="container_dates">
+	<% @date_list.each_with_index do |date_list| %>
 	<p>
-		<a class="button_yellow" href="/admin/delete/date/<%= date_list.id %>">Delete</a>	
-		<a class="button_yellow" href="/admin/edit/date/<%= date_list.id %>">Edit</a>
-		<a class="button_yellow view_date" href="/admin/registrations/<%= date_list.id %>">View <%= date_list.date.strftime("%a, %b %d") %> @ <%= date_list.time.strftime("%I:%M %p") %></a>
-		<a class="button_yellow" href="/admin/download/<%= date_list.id %>">Download CSV</a>
+		<a class="btn_expand_to_fit" href="/admin/delete/date/<%= date_list.id %>">Delete</a>	
+		<a class="btn_expand_to_fit" href="/admin/edit/date/<%= date_list.id %>">Edit</a>
+		<a href="/admin/registrations/<%= date_list.id %>">View <%= date_list.date.strftime("%a, %b %d") %> @ <%= date_list.time.strftime("%I:%M %p") %></a>
+		<a class="btn_expand_to_fit" href="/admin/download/<%= date_list.id %>">Download CSV</a>
 	</p>
-<% end %>
-
-<div class="bottom_margin"></div>
+	<% end %>
+</div>

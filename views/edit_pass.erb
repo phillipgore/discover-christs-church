@@ -1,33 +1,25 @@
-<h1 class="heading">Change the Password for <%= @user.user_first_name %> <%= @user.user_last_name %>.</h1>
-
 <%= erb :'admin_nav', :layout => false %>
 
-<div class="container">
-
+<h1>Discover Christ's Church</h1>
+<h2>Change the Password for <%= @user.user_first_name %> <%= @user.user_last_name %>.</h2> 
+	
+<form action="/admin/update/password/<%= @user.id %>" method="post" id="user" enctype="multipart/form-data">
 	<% if flash[:notice] %>  
 	    <div class="notice"><%= flash[:notice] %></div>
-	<% end %> 
-	
-	<form class="" action="/admin/update/password/<%= @user.id %>" method="post" id="user" enctype="multipart/form-data">
-	
-		<fieldset>
-			<label>Password</label>
-			<input type="password" autocomplete='off' name="password" id="password" autocorrect="off" autocapitalize="off"/>
-		</fieldset>
-				
-		<fieldset>		
-			<label>New Password</label>
-			<input type="password" autocomplete='off' name="new_password" id="new_password" autocorrect="off" autocapitalize="off"/>
-			<label>Retype</label>
-			<input type="password" autocomplete='off' name="retype_password" id="retype_password" autocorrect="off" autocapitalize="off"/>
-		</fieldset>
-				
-		<fieldset>		
-			<button class="button_yellow button_float_right" type="submit">Update</button>
-		</fieldset>
-		
-	</form>
-
-</div>
-
-<div class="bottom_margin"></div>
+	<% end %>
+	<fieldset>
+		<label>Password</label>
+		<input type="password" autocomplete='off' name="password" id="password" autocorrect="off" autocapitalize="off"/>
+	</fieldset>
+			
+	<fieldset>		
+		<label>New Password</label>
+		<input type="password" autocomplete='off' name="new_password" id="new_password" autocorrect="off" autocapitalize="off"/><br>
+		<label>Retype</label>
+		<input type="password" autocomplete='off' name="retype_password" id="retype_password" autocorrect="off" autocapitalize="off"/>
+	</fieldset>
+			
+	<fieldset>		
+		<button class="btn_expand_to_fit btn_right" type="submit">Update</button>
+	</fieldset>
+</form>
