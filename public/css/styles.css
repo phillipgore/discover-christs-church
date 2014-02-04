@@ -191,6 +191,8 @@ input, textarea {
 	border: 1px solid #312A21;
 	color: #312A21;
 	background: #F2E7DB;
+	-webkit-appearance: none;
+	border-radius: 0;
 }
 
 textarea {
@@ -258,70 +260,5 @@ select {
 
 .info_item{
 	margin-right: 9px;
-}
-
-.date {
-	width: 200px;
-}
- .view_date {
-	width: 234px;
-}
- 
- .button_float_right {
-	margin-left: 0px;
-	margin-bottom: 0px;
-	margin-right: 7px;
-	margin-top: 0px;
-	float: right;
-}
- .button_secondary {
-	margin-right: 18px;
-	float: right;
-}
- .top_buttons {
-	margin-bottom: 36px;
-	margin-top: 18px;
-}
- table {
-	text-align: left;
-	color: white;
-	text-shadow: 0px 2px 4px #020924;
-	border-collapse: collapse;
-	padding: 0px;
-	font-size: 24px;
-	margin-right: auto;
-	margin-left: auto;
-}
- table .button_yellow {
-	margin: 0px;
-}
- td {
-	padding-bottom: 6px;
-	padding-top: 6px;
-	border-style: none;
-	padding-right: 7px;
-	padding-left: 8px;
-}
- thead td {
-	padding-bottom: 18px;
-}
- .jq_current {
-	position: relative;
-}
- .button_upper_left {
-	right: 18px;
-	top: 18px;
-	position: absolute;
-}
- 
- table .notice {
-	padding-bottom: 18px;
-	text-align: left;
-	color: #f2a026;
-	font-size: 20px;
-}
- .bottom_margin {
-	height: 72px;
-	width: 100%;
 }
  
