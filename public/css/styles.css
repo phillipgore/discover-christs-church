@@ -16,7 +16,6 @@ body {
 }
 
 .container {
-	min-height: 768px;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -32,7 +31,7 @@ body {
 	right: 36px;
 	bottom: 36px;
 	left: 36px;
-	min-height: 696px;
+	min-height: 662px;
 	overflow-x: scroll;
 }
 
@@ -41,7 +40,7 @@ h1 {
 	font-weight: normal;
 	font-size: 54px;
 	margin: 0;
-	padding: 91px 0 0;
+	padding: 74px 0 0;
 	color: #312A21;
 }
 
@@ -87,7 +86,7 @@ h2 {
 .today {
 	font-size: 16px;
 	text-align: center;
-	color: #999999;
+	color: #666;
 	margin-top: -16px;
 	font-weight: normal;
 	font-style: normal;
