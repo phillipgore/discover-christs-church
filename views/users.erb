@@ -4,9 +4,7 @@
 <h2>Manage Users</h2>
 
 <form class="" action="/admin/add/user" method="post" id="user" enctype="multipart/form-data">
-	<% if flash[:notice] %>  
-	    <div class="notice"><%= flash[:notice] %></div>
-	<% end %>
+	<div class="jsNotice"></div>
 	
 	<fieldset>
 		<label>First</label>

@@ -147,11 +147,15 @@ a, button {
 	float: left;
 }
 
-.notice {
+.jsNotice, .notice {
 	text-align: center;
-	color: #C10004;
+	color: #660000;
 	margin-bottom: 9px;
 	margin-top: -18px;
+}
+
+.jsNotice {
+	display: none;
 }
 
 form {

@@ -6,9 +6,7 @@
 
 
 <form class="" action="/add/registration/<%= @date.id %>" method="post" id="date" enctype="multipart/form-data">
-	<% if flash[:notice] %>  
-	    <div class="notice"><%= flash[:notice] %></div>
-	<% end %> 
+	<div class="jsNotice"></div> 
 	
 	<fieldset>
 		<label>First*</label>

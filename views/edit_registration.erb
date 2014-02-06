@@ -2,9 +2,7 @@
 <h2>Edit registration.</h2> 
 
 <form class="" action="/update/registration/<%= @registrant.id %>" method="post" id="registrant" enctype="multipart/form-data">
-	<% if flash[:notice] %>  
-	    <div class="notice"><%= flash[:notice] %></div>
-	<% end %> 
+	<div class="jsNotice"></div> 
 	
 	<fieldset>
 		<select name="registrant[discover_id]">

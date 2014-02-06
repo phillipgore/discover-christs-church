@@ -4,9 +4,8 @@
 <h2>Edit Date.</h2> 
 
 <form class="" action="/admin/update/date/<%= @discover.id %>" method="post" id="date" enctype="multipart/form-data">
-	<% if flash[:notice] %>  
-	    <div class="notice"><%= flash[:notice] %></div>
-	<% end %>
+	<div class="jsNotice"></div>
+	
 	<fieldset>
 		<label>Date</label>
 		<input type="text" name="discover[date]" id="date" autocorrect="off" value="<%= @discover.date.strftime("%b %d, %Y") %>"><br>

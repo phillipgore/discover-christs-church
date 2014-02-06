@@ -31,7 +31,7 @@ class DCC < Sinatra::Base
 	
 	before '/admin/*' do
 		unless session['user_id']
-			redirect '/admin'
+			return '/admin'
 		end
 	end
 	
@@ -59,9 +59,9 @@ class DCC < Sinatra::Base
 		@date = Discover.get(params[:id])
 		@registrant = @date.registrants.new(params[:registrant])
 		if @registrant.save
-			redirect "/thanks/#{@registrant.id}"
+			return "/thanks/#{@registrant.id}"
 		else
-			redirect "/new/registration/#{@date.id}", flash[:notice] = "Are all required* fields completed?<br/ > Is the email formatted correctly?"
+			return "1 Are all required* fields completed?<br> Is the email formatted correctly?"
 		end
 	end
 	
@@ -76,9 +76,9 @@ class DCC < Sinatra::Base
 		@registrant = Registrant.get(params[:id])
 		@registrant.update(params[:registrant])
 		if @registrant.save
-			redirect "/thanks/#{@registrant.id}"
+			return "/thanks/#{@registrant.id}"
 		else
-			redirect "/edit/registration/#{@registrant.id}", flash[:notice] = "Are all required* fields completed?<br/ > Is the email formatted correctly?"
+			return "1 Are all required* fields completed?<br> Is the email formatted correctly?"
 		end
 	end
 	
@@ -106,7 +106,7 @@ class DCC < Sinatra::Base
 #						:password => '6045greenland',
 #						:domain => 'sendgrid.info'
 #					} 
-      redirect '/'
+      return '/'
 	end
 	
 	get '/sendgrid' do
@@ -117,7 +117,7 @@ class DCC < Sinatra::Base
 #Login	
 	get '/admin' do
 		if session['user_id']
-			redirect '/admin/dates'
+			return '/admin/dates'
 		else
 			erb :login
 		end
@@ -132,18 +132,18 @@ class DCC < Sinatra::Base
 	  if @user
 	    if @user.password == params[:password]
 	      session['user_id'] = @user.id
-	      redirect '/admin/dates'
+	      return '/admin/dates'
 	    else
-	      redirect '/login-form',flash[:notice] = "Sorry, invalid password."
+	      return "1 Sorry, invalid password."
 		end
 	  else
-	    redirect '/login-form', flash[:notice] = "Sorry, invalid username."
+	    return "1 Sorry, invalid username."
 	  end
 	end
 		
 	get '/logout' do
 		session['user_id'] = nil
-		redirect '/admin/dates'
+		return '/admin/dates'
 	end
 
 
@@ -186,7 +186,7 @@ class DCC < Sinatra::Base
 	get '/admin/delete/registration/:id' do
 		@registrant = Registrant.get(params[:id])
 		Registrant.get(params[:id]).destroy!
-		redirect "/admin/registrations/#{@registrant.discover_id}"
+		return "/admin/registrations/#{@registrant.discover_id}"
 	end
 	
 	get '/admin/edit/registration/:id' do
@@ -200,9 +200,9 @@ class DCC < Sinatra::Base
 		@registrant = Registrant.get(params[:id])
 		@registrant.update(params[:registrant])
 		if @registrant.save
-			redirect "/admin/registrations/#{@registrant.discover_id}"
+			return "/admin/registrations/#{@registrant.discover_id}"
 		else
-			redirect "/admin/edit/registration/#{@registrant.id}", flash[:notice] = "Are all required* fields completed?<br/ > Is the email formatted correctly?"
+			return "1 Are all required* fields completed?<br> Is the email formatted correctly?"
 		end
 	end
 	
@@ -215,9 +215,9 @@ class DCC < Sinatra::Base
 	post '/admin/add/date' do
 		@discover = Discover.new(params[:discover])
 		if @discover.save
-			redirect '/admin/dates'
+			return '/admin/dates'
 		else
-			redirect "/admin/dates", flash[:notice] = "All fields are required.<br/ > Please format correctly."
+			return "1 All fields are required.<br> Please format correctly."
 		end
 	end	
 
@@ -232,9 +232,9 @@ class DCC < Sinatra::Base
 		@discover = Discover.get(params[:id])
 		@discover.update(params[:discover])
 		if @discover.save
-			redirect "/admin/dates"
+			return "/admin/dates"
 		else
-			redirect "/admin/edit/date/#{@discover.id}", flash[:notice] = "All fields are required.<br/ > Please format correctly."
+			return "1 All fields are required.<br> Please format correctly."
 		end
 	end
 
@@ -243,7 +243,7 @@ class DCC < Sinatra::Base
 		@discover = Discover.get(params[:id])
 		Discover.get(params[:id]).destroy!
 		@discover.registrants.all.destroy!
-		redirect "/admin/dates"
+		return "/admin/dates"
 	end
 
 	
@@ -256,9 +256,9 @@ class DCC < Sinatra::Base
 	post '/admin/add/user' do
 		@user = User.new(params[:user])
 		if @user.save
-			redirect '/admin/users'
+			return '/admin/users'
 		else
-			redirect "/admin/users", flash[:notice] = "All fields are required.<br/ > Please format correctly."
+			return "1 All fields are required.<br> Please format correctly."
 		end
 	end	
 
@@ -273,9 +273,9 @@ class DCC < Sinatra::Base
 		@user = User.get(params[:id])
 		@user.update(params[:user])
 		if @user.save
-			redirect "/admin/users"
+			return "/admin/users"
 		else
-			redirect "/admin/edit/user/#{@user.id}", flash[:notice] = "All fields are required.<br/ > Please format correctly."
+			return "1 All fields are required.<br> Please format correctly."
 		end
 	end
 	
@@ -292,12 +292,12 @@ class DCC < Sinatra::Base
 			if params[:new_password] == params[:retype_password]
 				@user = User.update(:password => params[:new_password])
 				session['user_id'] = nil
-				redirect '/admin', flash[:notice] = "New password. Please log in again."
+				return "1 New password. Please log in again."
 			else
-				redirect "/admin/edit/password/#{@user.id}", flash[:notice] = "Sorry, new passwords don't match."
+				return "1 Sorry, new passwords don't match."
 			end
 		else
-			redirect "/admin/edit/password/#{@user.id}", flash[:notice] = "Sorry, invalid password."
+			return "1 Sorry, invalid password."
 		end
 	end
 
@@ -305,9 +305,9 @@ class DCC < Sinatra::Base
 	get '/admin/delete/user/:id' do
 		if User.count > 1
 			@user = User.get(params[:id]).destroy!
-			redirect "/admin/users"
+			return "/admin/users"
 		else
-			redirect "/admin/users", flash[:delete_notice] = "You must maintain at least one user account."
+			return "1 You must maintain at least one user account."
 		end
 	end
 	

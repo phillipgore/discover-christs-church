@@ -4,9 +4,8 @@
 <h2>Change the Password for <%= @user.user_first_name %> <%= @user.user_last_name %>.</h2> 
 	
 <form action="/admin/update/password/<%= @user.id %>" method="post" id="user" enctype="multipart/form-data">
-	<% if flash[:notice] %>  
-	    <div class="notice"><%= flash[:notice] %></div>
-	<% end %>
+	<div class="jsNotice"></div>
+	
 	<fieldset>
 		<label>Password</label>
 		<input type="password" autocomplete='off' name="password" id="password" autocorrect="off" autocapitalize="off"/>

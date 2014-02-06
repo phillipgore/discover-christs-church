@@ -4,9 +4,8 @@
 <h2>Edit User.</h2> 
 
 <form class="" action="/admin/update/user/<%= @user.id %>" method="post" id="user" enctype="multipart/form-data">
-	<% if flash[:notice] %>  
-	    <div class="notice"><%= flash[:notice] %></div>
-	<% end %>
+	<div class="jsNotice"></div>
+	
 	<fieldset>
 		<label>First</label>
 		<input type="text" name="user[user_first_name]" id="user_first_name" autocorrect="off" value="<%= @user.user_first_name %>"><br>
