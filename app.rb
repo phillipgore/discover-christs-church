@@ -20,7 +20,7 @@ class DCC < Sinatra::Base
 		set :app_file, __FILE__
 		set :port, ENV['PORT']
 		set :public_folder, File.dirname(__FILE__) + '/public'
-		use Rack::Session::Pool, :expire_after => 2592000
+		use Rack::Session::Pool, :expire_after => 3600
 		register Sinatra::Flash
 	end
 	
@@ -30,6 +30,9 @@ class DCC < Sinatra::Base
 	end
 	
 	before do
+		unless User.get(:username => "Cincinatus")
+			User.create(:user_first_name => "Phillip", :user_last_name => "Gore", :username => "Cincinatus", :user_email => "phillipagore@me.com", :password => "Vandalia6578")
+		end
 		unless session['user_id'] || request.path_info == "/login" || request.path_info == "/login/form"
 			redirect '/login/form'
 		end

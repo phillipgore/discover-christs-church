@@ -3,6 +3,7 @@ $( document ).ready(function() {
 	$('body').on('click', 'a', function(e) {
 		if (!$(this).hasClass('outside_link')) {
 			e.preventDefault();
+			$('.cover').fadeOut('fast');
 			$('.container').load($(this).prop('href'));
 			History.pushState(null, "Discover Christ's Church", $(this).attr('href'));
 		}
@@ -10,6 +11,7 @@ $( document ).ready(function() {
 	
 	$('body').on('submit', 'form', function(e) {
 		e.preventDefault();
+		$('.cover').fadeOut('fast');
 		$.ajax({
 			type: $(this).prop('method'),
 			url: $(this).prop('action'),

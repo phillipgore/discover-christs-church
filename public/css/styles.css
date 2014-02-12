@@ -25,7 +25,7 @@ body {
 }
 
 .content {
-	background: #A1978C;
+	background: url(../img/ajax-loader.gif) center 332px no-repeat #A1978C;
 	border-radius: 15px;
 	position: absolute;
 	top: 36px;
@@ -34,6 +34,12 @@ body {
 	left: 36px;
 	min-height: 662px;
 	overflow-x: scroll;
+}
+
+.cover {
+	background: #A1978C;
+	padding-bottom: 36px;
+	min-height: 400px;
 }
 
 h1 {
