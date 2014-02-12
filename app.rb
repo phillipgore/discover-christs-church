@@ -295,8 +295,7 @@ class DCC < Sinatra::Base
 	get '/admin/delete/date/:id' do
 		@discover = Discover.get(params[:id])
 		Discover.get(params[:id]).destroy!
-		@discover.registrants.all.destroy!
-		return "/admin/dates"
+		erb :dates	
 	end
 
 	

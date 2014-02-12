@@ -24,8 +24,8 @@ body {
 	left: 0;
 }
 
-.content {
-	background: url(../img/ajax-loader.gif) center 332px no-repeat #A1978C;
+.content, .cover {
+	background: #A1978C;
 	border-radius: 15px;
 	position: absolute;
 	top: 36px;
@@ -37,9 +37,13 @@ body {
 }
 
 .cover {
-	background: #A1978C;
-	padding-bottom: 36px;
-	min-height: 400px;
+	background: url(../img/ajax-loader.gif) center 332px no-repeat #A1978C;
+	z-index: 1000;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	display: none;
 }
 
 h1 {
