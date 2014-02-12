@@ -15,7 +15,9 @@
 
 	<fieldset>
 		<label>Email</label>
-		<input type="email" autocomplete='off' name="user[user_email]" id="user_email" autocorrect="off" autocapitalize="off" value="<%= @user.user_email %>"/>
+		<input type="text" autocomplete='off' name="user[username]" id="username" autocorrect="off" autocapitalize="off" value="<%= @user.username %>"/>
+		<label>Username</label>
+		<input type="text" autocomplete='off' name="user[username]" id="username" autocorrect="off" autocapitalize="off"/><br>
 	</fieldset>
 	
 	<fieldset>		

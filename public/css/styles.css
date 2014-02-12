@@ -4,6 +4,7 @@ html {
 	min-height: 100%; 
 	overflow:auto; /* triggers 100% height in Opera 9.5 */
 	overflow-y:scroll; /* creates a horizontal scrollbar, for a more consistent look & feel */
+	background: #F2E7DB;
 }
 
 body {
@@ -52,7 +53,6 @@ h2 {
 	padding: 0;
 	color: #312A21;
 }
-
 
 .calender {
 	margin: 70px auto;
@@ -117,6 +117,27 @@ a, button {
 	color: #F2E7DB;
 	margin-bottom: 9px;
 	width: 220px;
+}
+
+.links_container {
+	text-align: center;
+	position: absolute;
+	bottom: 9px;
+	right: 0;
+	left: 0;
+}
+
+.admin_link {
+	padding: 0 6px;
+	margin: 0;
+	text-align: center;
+	color: #312A21;
+	font-size: 12px;
+	background-color: transparent;
+	width: auto;
+	font-weight: normal;
+	font-style: normal;
+	text-decoration: none;
 }
 
 .btn_expand_to_fit {

@@ -29,24 +29,22 @@ class DCC < Sinatra::Base
 		alias_method :h, :escape_html
 	end
 	
-	before '/admin/*' do
-		unless session['user_id']
-			return '/admin'
+	before do
+		unless session['user_id'] || request.path_info == "/login" || request.path_info == "/login/form"
+			redirect '/login/form'
 		end
 	end
-	
-
 
 #Site
 	get '/' do
 		@time = Time.now
-		@date_list = Discover.all(:date.gt => @time, :order => [:date.asc]).take(3)
+		@date_list = Discover.all(:date.gt => @time, :order => [:date.asc], :user_id => session['user_id']).take(3)
 		erb :choose_date
 	end
 		
 	get '/more' do
 		@time = Time.now
-		@date_list = Discover.all(:date.gt => @time, :order => [:date.asc])
+		@date_list = Discover.all(:date.gt => @time, :order => [:date.asc], :user_id => session['user_id'])
 		erb :more_dates
 	end
 	
@@ -68,7 +66,7 @@ class DCC < Sinatra::Base
 	get '/edit/registration/:id' do
 		@registrant = Registrant.get(params[:id])
 		@date = Discover.get(@registrant.discover.id)
-		@date_list = Discover.all(:order => [:date.asc])
+		@date_list = Discover.all(:order => [:date.asc], :user_id => session['user_id'])
 		erb :edit_registration
 	end
 	
@@ -106,7 +104,9 @@ class DCC < Sinatra::Base
 #						:password => '6045greenland',
 #						:domain => 'sendgrid.info'
 #					} 
-      return '/'
+		@time = Time.now
+		@date_list = Discover.all(:date.gt => @time, :order => [:date.asc], :user_id => session['user_id']).take(3)
+		erb :choose_date
 	end
 	
 	get '/sendgrid' do
@@ -116,40 +116,90 @@ class DCC < Sinatra::Base
 
 #Login	
 	get '/admin' do
-		if session['user_id']
-			return '/admin/dates'
-		else
-			erb :login
-		end
+		@date_list = Discover.all(:order => [:date.asc], :user_id => session['user_id'])
+		erb :dates
 	end
 	
-	get '/login-form' do
+	get '/login/form' do
 		erb :login
 	end
 	
-	post '/login' do
-	  @user = User.first(:user_email => params[:user_email])
-	  if @user
-	    if @user.password == params[:password]
-	      session['user_id'] = @user.id
-	      return '/admin/dates'
-	    else
-	      return "1 Sorry, invalid password."
+	post '/login' do	  
+		if params[:username] == "demo"
+			@random = "demo" + "#{rand(5000)}"
+			@user = User.create(:user_first_name => @random, :user_last_name => @random, :username => @random, :user_email => @random + "@" + @random +".com", :password => @random,)
+			
+			@start_one = Date.new(DateTime.now.cwyear, DateTime.now.next_month(n=1).mon, 1).to_date
+			@day_one = 7 - @start_one.cwday + @start_one.day + 7
+			@date_one = Date.new(DateTime.now.cwyear, DateTime.now.next_month(n=1).mon, @day_one)
+			
+			@start_two = Date.new(DateTime.now.cwyear, DateTime.now.next_month(n=2).mon, 1).to_date
+			@day_two = 7 - @start_two.cwday + @start_two.day + 7
+			@date_two = Date.new(DateTime.now.cwyear, DateTime.now.next_month(n=2).mon, @day_two)
+			
+			@start_three = Date.new(DateTime.now.cwyear, DateTime.now.next_month(n=3).mon, 1).to_date
+			@day_three = 7 - @start_three.cwday + @start_three.day + 7
+			@date_three = Date.new(DateTime.now.cwyear, DateTime.now.next_month(n=3).mon, @day_three)
+			
+			@start_four = Date.new(DateTime.now.cwyear, DateTime.now.next_month(n=4).mon, 1).to_date
+			@day_four = 7 - @start_four.cwday + @start_four.day + 7
+			@date_four = Date.new(DateTime.now.cwyear, DateTime.now.next_month(n=4).mon, @day_four)
+			
+			@start_five = Date.new(DateTime.now.cwyear, DateTime.now.next_month(n=5).mon, 1).to_date
+			@day_five = 7 - @start_five.cwday + @start_five.day + 7
+			@date_five = Date.new(DateTime.now.cwyear, DateTime.now.next_month(n=5).mon, @day_five)
+			
+			@dcc_one = @user.discovers.create(:date => @date_one, :time => "10:30 am")
+			@dcc_two = @user.discovers.create(:date => @date_two, :time => "10:30 am")
+			@dcc_three = @user.discovers.create(:date => @date_three, :time => "10:30 am")
+			@dcc_four = @user.discovers.create(:date => @date_four, :time => "10:30 am")
+			@dcc_five = @user.discovers.create(:date => @date_five, :time => "10:30 am")
+			
+			@dcc_one.registrants.create(:first_name => "Channing", :last_name => "Lancaster", :phone => "337-441-2283", :email => "channing@demo.com")
+			@dcc_one.registrants.create(:first_name => "Beau", :last_name => "Thompson", :phone => "840-440-1896", :email => "lacinia@demo.com")
+			@dcc_one.registrants.create(:first_name => "Constance", :last_name => "Barnett", :phone => "691-489-2420", :email => "constance@demo.com")
+			@dcc_one.registrants.create(:first_name => "Francis", :last_name => "Terry", :phone => "825-368-9169", :email => "francis@demo.com")
+			@dcc_one.registrants.create(:first_name => "Karina", :last_name => "Skinner", :phone => "239-107-3727", :email => "karina@demo.com")
+			@dcc_one.registrants.create(:first_name => "Vivien", :last_name => "Stokes", :phone => "110-817-5830", :email => "vivien@demo.com")
+			
+			@dcc_two.registrants.create(:first_name => "Elijah", :last_name => "Carrillo", :phone => "700-179-5852", :email => "elijah@demo.com")
+			@dcc_two.registrants.create(:first_name => "Autumn", :last_name => "Roth", :phone => "479-233-6383", :email => "autumn@demo.com")
+			@dcc_two.registrants.create(:first_name => "Lillian", :last_name => "Hickman", :phone => "984-965-0103", :email => "lillian@demo.com")
+			@dcc_two.registrants.create(:first_name => "Jade", :last_name => "Bowman", :phone => "468-225-5518", :email => "jade@demo.com")
+			@dcc_two.registrants.create(:first_name => "David", :last_name => "Jacobson", :phone => "629-987-9548", :email => "david@demo.com")
+			
+			@dcc_three.registrants.create(:first_name => "Alexandra", :last_name => "Yang", :phone => "430-420-1913", :email => "alexandra@demo.com")
+			@dcc_three.registrants.create(:first_name => "Madeson", :last_name => "Roach", :phone => "783-358-6958", :email => "madeson@demo.com")
+			@dcc_three.registrants.create(:first_name => "Dakota", :last_name => "Reid", :phone => "144-261-0920", :email => "dakota@demo.com")
+			@dcc_three.registrants.create(:first_name => "Wayne", :last_name => "Faulkner", :phone => "230-500-6848", :email => "wayne@demo.com")
+			
+			session['user_id'] = @user.id
+			return '/'
+		else
+		  @user = User.first(:username => params[:username])
+		  if @user
+		    if @user.password == params[:password]
+		      session['user_id'] = @user.id
+		      return '/'
+		    else
+		      return "1 Sorry, invalid password."
+			end
+		  else
+		    return "1 Sorry, invalid username."
+		  end
 		end
-	  else
-	    return "1 Sorry, invalid username."
-	  end
+	  
 	end
 		
 	get '/logout' do
 		session['user_id'] = nil
-		return '/admin/dates'
+		erb :login
 	end
 
 
 #Admin		
 	get '/admin/dates' do
-		@date_list = Discover.all(:order => [:date.asc])
+		@date_list = Discover.all(:order => [:date.asc], :user_id => session['user_id'])
 		erb :dates
 	end
 
@@ -192,7 +242,7 @@ class DCC < Sinatra::Base
 	get '/admin/edit/registration/:id' do
 		@registrant = Registrant.get(params[:id])
 		@date = Discover.get(@registrant.discover.id)
-		@date_list = Discover.all(:order => [:date.asc])
+		@date_list = Discover.all(:order => [:date.asc], :user_id => session['user_id'])
 		erb :admin_edit_registration
 	end
 	
@@ -247,78 +297,78 @@ class DCC < Sinatra::Base
 	end
 
 	
-	get '/admin/users' do
-		@users = User.all(:order => [:user_last_name.asc])
-		erb :users
-	end
-	
-	
-	post '/admin/add/user' do
-		@user = User.new(params[:user])
-		if @user.save
-			return '/admin/users'
-		else
-			return "1 All fields are required.<br> Please format correctly."
-		end
-	end	
-
-	
-	get '/admin/edit/user/:id' do
-		@user = User.get(params[:id])
-		erb :edit_user
-	end
-
-	
-	post '/admin/update/user/:id' do
-		@user = User.get(params[:id])
-		@user.update(params[:user])
-		if @user.save
-			return "/admin/users"
-		else
-			return "1 All fields are required.<br> Please format correctly."
-		end
-	end
-	
-	
-	get '/admin/edit/password/:id' do
-		@user = User.get(params[:id])
-		erb :edit_pass
-	end
-	
-	
-	post '/admin/update/password/:id' do
-		@user = User.get(params[:id])
-		if @user.password == params[:password] 
-			if params[:new_password] == params[:retype_password]
-				@user = User.update(:password => params[:new_password])
-				session['user_id'] = nil
-				return "1 New password. Please log in again."
-			else
-				return "1 Sorry, new passwords don't match."
-			end
-		else
-			return "1 Sorry, invalid password."
-		end
-	end
-
-
-	get '/admin/delete/user/:id' do
-		if User.count > 1
-			@user = User.get(params[:id]).destroy!
-			return "/admin/users"
-		else
-			return "1 You must maintain at least one user account."
-		end
-	end
-	
-	get "/admin/email" do
-		erb :email
-	end
-	
-	post '/admin/update/email' do
-		@confirm = Confirm.first
-		@confirm.update(params[:confirm])
-	end
+#	get '/admin/users' do
+#		@users = User.all(:order => [:user_last_name.asc])
+#		erb :users
+#	end
+#	
+#	
+#	post '/admin/add/user' do
+#		@user = User.new(params[:user])
+#		if @user.save
+#			return '/admin/users'
+#		else
+#			return "1 All fields are required.<br> Please format correctly."
+#		end
+#	end	
+#
+#	
+#	get '/admin/edit/user/:id' do
+#		@user = User.get(params[:id])
+#		erb :edit_user
+#	end
+#
+#	
+#	post '/admin/update/user/:id' do
+#		@user = User.get(params[:id])
+#		@user.update(params[:user])
+#		if @user.save
+#			return "/admin/users"
+#		else
+#			return "1 All fields are required.<br> Please format correctly."
+#		end
+#	end
+#	
+#	
+#	get '/admin/edit/password/:id' do
+#		@user = User.get(params[:id])
+#		erb :edit_pass
+#	end
+#	
+#	
+#	post '/admin/update/password/:id' do
+#		@user = User.get(params[:id])
+#		if @user.password == params[:password] 
+#			if params[:new_password] == params[:retype_password]
+#				@user = User.update(:password => params[:new_password])
+#				session['user_id'] = nil
+#				return "1 New password. Please log in again."
+#			else
+#				return "1 Sorry, new passwords don't match."
+#			end
+#		else
+#			return "1 Sorry, invalid password."
+#		end
+#	end
+#
+#
+#	get '/admin/delete/user/:id' do
+#		if User.count > 1
+#			@user = User.get(params[:id]).destroy!
+#			return "/admin/users"
+#		else
+#			return "1 You must maintain at least one user account."
+#		end
+#	end
+#	
+#	get "/admin/email" do
+#		erb :email
+#	end
+#	
+#	post '/admin/update/email' do
+#		@confirm = Confirm.first
+#		@confirm.update(params[:confirm])
+#	end
 	
 
 	DCC.run!

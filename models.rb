@@ -5,11 +5,15 @@ class User
 	include DataMapper::Resource
 
 	property :id, 					Serial
+	property :created_at,			DateTime
 	property :user_first_name,		String, 	:required => true
 	property :user_last_name,		String, 	:required => true
+	property :username,				String, 	:required => true
 	property :user_email,			String, 	:required => true, :unique => true, :format => :email_address
 	property :password,				BCryptHash, :required => true, :length => 255
-
+	
+	has n, :discovers
+	
 end
 
 class Discover
@@ -17,9 +21,10 @@ class Discover
 	include DataMapper::Resource
 
 	property :id, 					Serial
-	property :date,					Date, 	:required => true
+	property :date,					Date, 		:required => true
 	property :time,					DateTime, 	:required => true
-
+	
+	belongs_to	:user
 	has n, :registrants
 
 end

@@ -16,6 +16,8 @@
 	<fieldset>
 		<label>Email</label>
 		<input type="email" autocomplete='off' name="user[user_email]" id="user_email" autocorrect="off" autocapitalize="off"/><br>
+		<label>Username</label>
+		<input type="text" autocomplete='off' name="user[username]" id="username" autocorrect="off" autocapitalize="off"/><br>
 		<label>Password</label>
 		<input type="text" autocomplete='off' name="user[password]" id="password" autocorrect="off" autocapitalize="off"/>
 	</fieldset>
@@ -36,4 +38,4 @@
     <a class="btn_expand_to_fit btn_email" href="mailto:<%= users.user_email %>"><%= users.user_first_name %> <%= users.user_last_name %>: <%= users.user_email %></a>
 	<a class="btn_expand_to_fit" href="/admin/edit/password/<%= users.id %>">Change Password</a><br>
 <% end %>
-<div>
+</div>
