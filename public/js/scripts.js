@@ -5,9 +5,10 @@ $( document ).ready(function() {
 			e.stopPropagation();
 			e.preventDefault();
 			$('.cover').fadeIn('fast');
-			$('.container').load($(this).prop('href'));
+			$('.container').load($(this).prop('href'), function() {
+				$('.cover').fadeOut('fast');
+			});
 			History.pushState(null, "Discover Christ's Church", $(this).attr('href'));
-			$('.cover').fadeOut('fast');
 		}
 	});
 	
@@ -24,9 +25,10 @@ $( document ).ready(function() {
 					$('.cover').fadeOut('fast');
 					$('.jsNotice').html(data.slice(2)).slideDown();
 				} else {
-					$('.container').load(data);
+					$('.container').load(data, function() {
+						$('.cover').fadeOut('fast');
+					});
 					History.pushState(null, "Discover Christ's Church", data);
-					$('.cover').fadeOut('fast');
 				}
 			}
 		});
