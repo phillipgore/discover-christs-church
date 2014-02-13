@@ -2,7 +2,6 @@ $( document ).ready(function() {
 
 	$('body').on('click', 'a', function(e) {
 		if (!$(this).hasClass('outside_link')) {
-			e.stopPropagation();
 			e.preventDefault();
 			$('.cover').fadeIn('fast');
 			$('.container').load($(this).prop('href'), function() {
@@ -13,12 +12,13 @@ $( document ).ready(function() {
 	});
 	
 	$('body').on('submit', 'form', function(e) {
-		e.stopPropagation();
 		e.preventDefault();
+		
 		$('.cover').fadeIn('fast');
 		$.ajax({
-			type: $(this).prop('method'),
 			url: $(this).prop('action'),
+			type: $(this).prop('method'),
+			datatype: 'html',
 			data: $(this).serialize(),
 			success: function(data){
 				if (data.charAt(0) === "1") {
@@ -29,9 +29,11 @@ $( document ).ready(function() {
 						$('.cover').fadeOut('fast');
 					});
 					History.pushState(null, "Discover Christ's Church", data);
+					console.log(data)
 				}
 			}
 		});
+		return false;
 	});
 	
 	

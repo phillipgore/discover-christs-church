@@ -295,6 +295,7 @@ class DCC < Sinatra::Base
 	get '/admin/delete/date/:id' do
 		@discover = Discover.get(params[:id])
 		Discover.get(params[:id]).destroy!
+		@date_list = Discover.all(:order => [:date.asc], :user_id => session['user_id'])
 		erb :dates	
 	end
 
