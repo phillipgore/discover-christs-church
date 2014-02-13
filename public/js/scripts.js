@@ -1,10 +1,12 @@
 $( document ).ready(function() {
 
 	$('body').on('click', 'a', function(e) {
+		e.preventDefault();
+	
 		if (!$(this).hasClass('outside_link')) {
 			e.preventDefault();
 			$('.cover').fadeIn('fast');
-			$('.container').load($(this).prop('href'), function() {
+			$('.container').load($(this).prop('href') + " .content", function() {
 				$('.cover').fadeOut('fast');
 			});
 			History.pushState(null, "Discover Christ's Church", $(this).attr('href'));
@@ -25,7 +27,7 @@ $( document ).ready(function() {
 					$('.cover').fadeOut('fast');
 					$('.jsNotice').html(data.slice(2)).slideDown();
 				} else {
-					$('.container').load(data, function() {
+					$('.container').load(data + " .content", function() {
 						$('.cover').fadeOut('fast');
 					});
 					History.pushState(null, "Discover Christ's Church", data);
