@@ -25,7 +25,7 @@
 		<a class="btn_expand_to_fit" href="/admin/delete/date/<%= date_list.id %>">Delete</a>	
 		<a class="btn_expand_to_fit" href="/admin/edit/date/<%= date_list.id %>">Edit</a>
 		<a href="/admin/registrations/<%= date_list.id %>">View <%= date_list.date.strftime("%a, %b %d") %> @ <%= date_list.time.strftime("%I:%M %p") %></a>
-		<a class="btn_expand_to_fit" href="/admin/download/<%= date_list.id %>">Download CSV</a>
+		<a class="btn_expand_to_fit download" href="/admin/download/<%= date_list.id %>">Download CSV</a>
 	</p>
 	<% end %>
 </div>

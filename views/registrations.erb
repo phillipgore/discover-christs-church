@@ -5,7 +5,7 @@
 
 <div class="container_registrants">
 	<h2><%= @date.date.strftime("%A, %B %d") %> @ <%= @date.time.strftime("%I:%M %p") %>
-	<a class="btn_expand_to_fit" href="/admin/download/<%= @date.id %>">Download CSV</a><br></h2>
+	<a class="btn_expand_to_fit download" href="/admin/download/<%= @date.id %>">Download CSV</a><br></h2>
 	
 	<% @registrations.each_with_index do |registrations| %>
 	    <a class="btn_expand_to_fit" href="/admin/delete/registration/<%= registrations.id %>">Delete</a>
