@@ -131,6 +131,8 @@ a, button {
 	bottom: 9px;
 	right: 0;
 	left: 0;
+	margin-right: 36px;
+	margin-left: 36px;
 }
 
 .admin_link {
@@ -144,6 +146,16 @@ a, button {
 	font-weight: normal;
 	font-style: normal;
 	text-decoration: none;
+}
+
+.admin_link:hover {
+	text-decoration: underline;
+}
+
+.admin_link_right {
+	position: absolute;
+	right: 0;
+	z-index: 1;
 }
 
 .btn_expand_to_fit {
