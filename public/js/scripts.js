@@ -1,16 +1,13 @@
 $( document ).ready(function() {
 
 	$('body').on('click', 'a', function(e) {
-		if (!$(this).hasClass('download')) {
+		if (!$(this).hasClass('download, outside_link') || (!$(this).hasClass('outside_link')) {
 			e.preventDefault();
-			if (!$(this).hasClass('outside_link')) {
-				e.preventDefault();
-				$('.cover').fadeIn('fast');
-				$('.container').load($(this).prop('href') + " .content", function() {
-					$('.cover').fadeOut('fast');
-				});
-				History.pushState(null, "Discover Christ's Church", $(this).attr('href'));
-			}
+			$('.cover').fadeIn('fast');
+			$('.container').load($(this).prop('href') + " .content", function() {
+				$('.cover').fadeOut('fast');
+			});
+			History.pushState(null, "Discover Christ's Church", $(this).attr('href'));
 		}
 	});
 	
