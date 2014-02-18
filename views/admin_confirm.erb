@@ -1,0 +1,17 @@
+<h1>Discover Christ's Church</h1>
+
+<h2>Confirm registration update.</h2>
+
+<div class="info">
+	<h2><strong><%= @date.date.strftime("%A, %B %d") %> @ <%= @date.time.strftime("%I:%M %p") %></strong></h2>
+	<p><%= @registrant.first_name %> <%= @registrant.last_name %><br />
+	<%= @registrant.phone %><br />
+	<%= @registrant.email %></p>
+	<p><%= @registrant.note %></p>
+	
+	<a class="btn_expand_to_fit" href="/edit/registration/<%= @registrant.id %>">Edit Registration</a>
+	<a class="btn_expand_to_fit button" href="/admin/registrations/<%= @registrant.discover_id %>">Confirm Registration</a>
+</div>
+
+<div class="bottom_margin"></div>
+

@@ -239,7 +239,9 @@ class DCC < Sinatra::Base
 	get '/admin/delete/registration/:id' do
 		@registrant = Registrant.get(params[:id])
 		Registrant.get(params[:id]).destroy!
-		return "/admin/registrations/#{@registrant.discover_id}"
+		@registrations = Registrant.all(:conditions => { :discover_id => @registrant.discover_id }, :order => [:last_name.asc])
+		@date = Discover.get(@registrant.discover_id)
+		erb :registrations
 	end
 	
 	get '/admin/edit/registration/:id' do
