@@ -304,4 +304,27 @@ select {
 .info_item{
 	margin-right: 9px;
 }
- 
+
+.demo {
+	width: 288px;
+	padding: 18px;
+	margin-right: auto;
+	margin-left: auto;
+	background: #F2E7DB;
+	border-radius: 5px;
+	margin-top: 27px;
+}
+
+.video_container {
+	background-color: rgba(0, 0, 0, 0.7);
+	z-index: 1000;
+	position: absolute;
+	padding: 18px;
+	border-radius: 10px;
+	-moz-box-shadow: 0 0 12px #000000;
+	box-shadow: 0 0 12px #000000;
+}
+
+
+
+
