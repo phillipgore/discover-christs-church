@@ -14,6 +14,7 @@ body {
 	font-family: Helvetica, Arial, sans-serif;
 	background: #F2E7DB;
 	color: #312A21;
+	min-height: 768px;
 }
 
 .container {
