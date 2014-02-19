@@ -22,7 +22,7 @@ body {
 	right: 0;
 	bottom: 0;
 	left: 0;
-	z-index: 100;
+	min-height: 768px;
 }
 
 .content, .cover {
