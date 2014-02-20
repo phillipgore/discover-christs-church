@@ -1,4 +1,29 @@
 $( document ).ready(function() {
+	
+	$(window).on('resize', function() {
+		centerItem($('.video_container'));
+	});
+	
+	$('.video_open').on('click', function(e) {
+		e.preventDefault();
+		centerItem($('.video_container'));
+		$('.video_container').fadeIn();
+	});
+	
+	$('.video_close').on('click', function(e) {
+		e.preventDefault();
+		$('.video_container').fadeOut('fast');
+	});
+	
+	function centerItem(item) {
+		var top = ($(window).outerHeight() / 2) - ($(item).outerHeight() / 2);
+		var left = ($(window).outerWidth() / 2) - ($(item).outerWidth() / 2);
+		$(item).css({
+			"top": top,
+			"left": left
+		});
+		
+	}
 
 	$('body').on('click', 'a', function(e) {
 		if (!$(this).hasClass('download')) {

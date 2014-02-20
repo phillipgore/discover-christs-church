@@ -307,23 +307,39 @@ select {
 }
 
 .demo {
-	width: 288px;
+	width: 224px;
 	padding: 18px;
 	margin-right: auto;
 	margin-left: auto;
 	background: #F2E7DB;
-	border-radius: 5px;
-	margin-top: 27px;
+	border-radius: 7px;
+	margin-top: 36px;
 }
 
 .video_container {
-	background-color: rgba(0, 0, 0, 0.7);
+	background-color: rgba(0, 0, 0, 0.75);
 	z-index: 1000;
 	position: absolute;
-	padding: 18px;
-	border-radius: 10px;
+	padding: 36px;
+	border-radius: 7px;
 	-moz-box-shadow: 0 0 12px #000000;
 	box-shadow: 0 0 12px #000000;
+	display: none;
+}
+
+.video_close {
+	width: 36px;
+	height: 36px;
+	background: url(../img/icn-close.png) center center no-repeat;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+
+.center {
+	display: block;
+	text-align: center;
+	width: auto;
 }
 
 
