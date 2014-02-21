@@ -12,6 +12,7 @@ $( document ).ready(function() {
 	
 	$('.video_close').on('click', function(e) {
 		e.preventDefault();
+		player.api('pause');
 		$('.video_container').fadeOut('fast');
 	});
 	
@@ -69,5 +70,29 @@ $( document ).ready(function() {
 	}
 	
 	History.Adapter.bind(window,'statechange');
+	
+	var iframe = $('#player')[0],
+	        player = $f(iframe),
+	        status = $('.status');
+	
+	    player.addEvent('ready', function() {
+	        status.text('ready');
+	
+	        player.addEvent('pause', onPause);
+	        player.addEvent('finish', onFinish);
+	        player.addEvent('playProgress', onPlayProgress);
+	    });
+	
+	    function onPause(id) {
+	        status.text('paused');
+	    }
+	
+	    function onFinish(id) {
+	        status.text('finished');
+	    }
+	
+	    function onPlayProgress(data, id) {
+	        status.text(data.seconds + 's played');
+	    }
 	
 });
