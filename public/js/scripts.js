@@ -12,7 +12,8 @@ $( document ).ready(function() {
 	
 	$('.video_close').on('click', function(e) {
 		e.preventDefault();
-		player.pauseVideo('x7PtZErtehc');
+		var player = $('.video_container iframe')
+		player.pauseVideo();
 		$('.video_container').fadeOut('fast');
 	});
 	
