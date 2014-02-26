@@ -69,27 +69,6 @@ $( document ).ready(function() {
 	}
 	
 	History.Adapter.bind(window,'statechange');
-	
-	var player;
-	
-	function onYouTubePlayerAPIReady() {
-	  // create the global player from the specific iframe (#video)
-	  player = new YT.Player('video', {
-	    events: {
-	      // call this function when player is ready to use
-	      'onReady': onPlayerReady
-	    }
-	  });
-	}
-	
-	function onPlayerReady(event) {
-	  
-	  var pauseButton = document.getElementById("pause-button");
-	  pauseButton.addEventListener("click", function() {
-	    player.pauseVideo();
-	  });
-	  
-	}
 
 });
 
