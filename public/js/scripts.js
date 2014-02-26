@@ -74,7 +74,7 @@ $( document ).ready(function() {
 	
 	function onYouTubePlayerAPIReady() {
 	  // create the global player from the specific iframe (#video)
-	  player = new YT.Player('player', {
+	  player = new YT.Player('video', {
 	    events: {
 	      // call this function when player is ready to use
 	      'onReady': onPlayerReady
@@ -84,7 +84,7 @@ $( document ).ready(function() {
 	
 	function onPlayerReady(event) {
 	  
-	  var pauseButton = document.getElementById("pause");
+	  var pauseButton = document.getElementById("pause-button");
 	  pauseButton.addEventListener("click", function() {
 	    player.pauseVideo();
 	  });
