@@ -9,7 +9,11 @@ $( document ).ready(function() {
 		centerItem($('.video_container'));
 		$('.video_container').fadeIn();
 	});
-
+	
+	$('.video_close').on('click', function(e) {
+		e.preventDefault();
+		$('.video_container').fadeOut('fast');
+	});
 	
 	function centerItem(item) {
 		var top = ($(window).outerHeight() / 2) - ($(item).outerHeight() / 2);
@@ -80,13 +84,10 @@ $( document ).ready(function() {
 	
 	function onPlayerReady(event) {
 	  
-		 $('.video_close').on('click', function(e) {
-		 	e.preventDefault();
-		 	function onPlayerReady(e) {
-		 		player.pauseVideo();
-		 	}
-		 	$('.video_container').fadeOut('fast');
-		 });
+	  var pauseButton = document.getElementById("pause");
+	  pauseButton.addEventListener("click", function() {
+	    player.pauseVideo();
+	  });
 	  
 	}
 
