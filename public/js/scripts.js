@@ -12,6 +12,7 @@ $( document ).ready(function() {
 	
 	$('.video_close').on('click', function(e) {
 		e.preventDefault();
+		$('#video').pauseVideo();
 		$('.video_container').fadeOut('fast');
 	});
 	
@@ -61,14 +62,6 @@ $( document ).ready(function() {
 			});
 			return false;
 	});
-	
-	
-	var History = window.History;
-	if ( !History.enabled ) {
-	    return false;
-	}
-	
-	History.Adapter.bind(window,'statechange');
 
 });
 
