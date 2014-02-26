@@ -12,7 +12,7 @@ $( document ).ready(function() {
 	
 	$('.video_close').on('click', function(e) {
 		e.preventDefault();
-		player.pauseVideo();
+		player.pauseVideo('x7PtZErtehc');
 		$('.video_container').fadeOut('fast');
 	});
 	
@@ -70,5 +70,5 @@ $( document ).ready(function() {
 	}
 	
 	History.Adapter.bind(window,'statechange');
-	
+
 });
