@@ -12,8 +12,7 @@ $( document ).ready(function() {
 	
 	$('.video_close').on('click', function(e) {
 		e.preventDefault();
-		e.push('pauseVideo();');
-		player.pauseVideo();
+		$('#player').pauseVideo();
 		$('.video_container').fadeOut('fast');
 	});
 	
