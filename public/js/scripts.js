@@ -13,7 +13,7 @@ $( document ).ready(function() {
 	$('.video_close').on('click', function(e) {
 		e.preventDefault();
 		var player = $('.video_container iframe')
-		player.pauseVideo();
+		$('.player').pauseVideo();
 		$('.video_container').fadeOut('fast');
 	});
 	
