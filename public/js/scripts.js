@@ -12,7 +12,9 @@ $( document ).ready(function() {
 	
 	$('.video_close').on('click', function(e) {
 		e.preventDefault();
-		$('#player').pauseVideo();
+		function onPlayerReady(e) {
+			player.pauseVideo();
+		}
 		$('.video_container').fadeOut('fast');
 	});
 	
@@ -70,6 +72,18 @@ $( document ).ready(function() {
 	}
 	
 	History.Adapter.bind(window,'statechange');
+	
+	var player;
+	
+	function onYouTubePlayerAPIReady() {
+	  // create the global player from the specific iframe (#video)
+	  player = new YT.Player('player', {
+	    events: {
+	      // call this function when player is ready to use
+	      'onReady': onPlayerReady
+	    }
+	  });
+	}
 
 });
 
