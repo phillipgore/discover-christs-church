@@ -132,25 +132,30 @@ class DCC < Sinatra::Base
 			@random = "demo" + "#{rand(5000)}"
 			@user = User.create(:user_first_name => @random, :user_last_name => @random, :username => @random, :user_email => @random + "@" + @random +".com", :password => @random,)
 			
-			@start_one = Date.new(DateTime.now.cwyear, DateTime.now.next_month(n=1).mon, 1).to_date
-			@day_one = 7 - @start_one.cwday + @start_one.day + 7
-			@date_one = Date.new(DateTime.now.cwyear, DateTime.now.next_month(n=1).mon, @day_one)
+			@start_one = Date.today >> 1
+			@new_one = Date.new(@start_one.cwyear, @start_one.mon, 1)
+			@day_one = 7 - @new_one.cwday + @new_one.day + 7
+			@date_one = Date.new(@start_one.cwyear, @start_one.mon, @day_one)
 			
-			@start_two = Date.new(DateTime.now.cwyear, DateTime.now.next_month(n=2).mon, 1).to_date
-			@day_two = 7 - @start_two.cwday + @start_two.day + 7
-			@date_two = Date.new(DateTime.now.cwyear, DateTime.now.next_month(n=2).mon, @day_two)
+			@start_two = Date.today >> 2
+			@new_two = Date.new(@start_two.cwyear, @start_two.mon, 1)
+			@day_two = 7 - @new_two.cwday + @new_two.day + 7
+			@date_two = Date.new(@start_two.cwyear, @start_two.mon, @day_two)
 			
-			@start_three = Date.new(DateTime.now.cwyear, DateTime.now.next_month(n=3).mon, 1).to_date
-			@day_three = 7 - @start_three.cwday + @start_three.day + 7
-			@date_three = Date.new(DateTime.now.cwyear, DateTime.now.next_month(n=3).mon, @day_three)
+			@start_three = Date.today >> 3
+			@new_three = Date.new(@start_three.cwyear, @start_three.mon, 1)
+			@day_three = 7 - @new_three.cwday + @new_three.day + 7
+			@date_three = Date.new(@start_three.cwyear, @start_three.mon, @day_three)
 			
-			@start_four = Date.new(DateTime.now.cwyear, DateTime.now.next_month(n=4).mon, 1).to_date
-			@day_four = 7 - @start_four.cwday + @start_four.day + 7
-			@date_four = Date.new(DateTime.now.cwyear, DateTime.now.next_month(n=4).mon, @day_four)
+			@start_four = Date.today >> 4
+			@new_four = Date.new(@start_four.cwyear, @start_four.mon, 1)
+			@day_four = 7 - @new_four.cwday + @new_four.day + 7
+			@date_four = Date.new(@start_four.cwyear, @start_four.mon, @day_four)
 			
-			@start_five = Date.new(DateTime.now.cwyear, DateTime.now.next_month(n=5).mon, 1).to_date
-			@day_five = 7 - @start_five.cwday + @start_five.day + 7
-			@date_five = Date.new(DateTime.now.cwyear, DateTime.now.next_month(n=5).mon, @day_five)
+			@start_five = Date.today >> 5
+			@new_six = Date.new(@start_five.cwyear, @start_five.mon, 1)
+			@day_five = 7 - @new_four.cwday + @new_four.day + 7
+			@date_five = Date.new(@start_five.cwyear, @start_five.mon, @day_five)
 			
 			@dcc_one = @user.discovers.create(:date => @date_one, :time => "10:30 am")
 			@dcc_two = @user.discovers.create(:date => @date_two, :time => "10:30 am")
